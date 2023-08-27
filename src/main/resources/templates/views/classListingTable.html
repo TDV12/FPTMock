@@ -1,0 +1,13 @@
+<tr th:each="classBath,start:${classBaths}" class="align-table-text">
+    <td class="col-sm-1"><input type="checkbox" th:id="${start.index}" th:value="${classBath.classId}"
+                                class="check-box"></td>
+    <td th:text="${classBath.classId}" class="col-sm-1"></td>
+    <td class="col-sm-1"><a href="#" class="viewMode" th:text="${classBath.classCode}"></a></td>
+    <td th:text="${classBath.className}" class="col-sm-2"></td>
+    <td th:text="${classBath.actualStartDate}" class="col-sm-1"></td>
+    <td th:text="${classBath.actualEndDate}" class="col-sm-1"></td>
+    <td th:text="${classBath.location}" class="col-sm-1"></td>
+    <td th:text="${classBath.status}" class="col-sm-1"></td>
+</tr>
+<script src="/js/twbsPagination.js"></script>
+<script src="/js/pagings.js"></script>

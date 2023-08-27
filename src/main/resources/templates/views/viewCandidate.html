@@ -1,0 +1,411 @@
+<h4 class="mt-3">View Candidate</h4>
+<hr>
+<div class="row  mx-4">
+	<div class="accordion accordion-flush" id="accordionFlushExample">
+		<div class="btn-group" role="group">
+			<h2 class="accordion-header" id="flush-headingOne">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+					data-bs-target="#InformationCandidate" aria-expanded="false" aria-controls="flush-collapseOne">
+					Candidate Information
+				</button>
+			</h2>
+			<h2 class="accordion-header" id="flush-headingTwo">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+					data-bs-target="#viewResult" aria-expanded="false" aria-controls="flush-collapseTwo">
+					Result
+				</button>
+			</h2>
+		</div>
+		<div class="accordion-item">
+
+			<div id="InformationCandidate" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+				data-bs-parent="#accordionFlushExample">
+				<div class="accordion-body">
+					<div class="row collapse.show">
+
+
+						<form action="#" id="formData" method="post">
+							<div id="Infomation">
+								<div class="card card-body d-flex">
+									<div class="row">
+										<button class="btn btn-secondary colorBt col-12" type="button"
+											data-bs-toggle="collapse" data-bs-target="#General" aria-expanded="false"
+											aria-controls="collapseExample">
+											Personal Information
+										</button>
+
+									</div>
+									<div class="collapse.show" id="General" th:object="${candidate}">
+										<div class="card card-body">
+											<div class="row">
+												<div class="col-4 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Empl ID</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="emplId" id="emplId"
+														th:value="${candidate.emplId}" readonly />
+												</div>
+												<div class="col-4 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Type</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="type" value="Candidate"
+														readonly />
+												</div>
+												<div class="col-4 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Status</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="type"
+														th:value="${candidate.status}" readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Application Date</p>
+													<input type="date" class="form-control w-100"
+														aria-describedby="basic-addon3" name="applicationDate"
+														th:value="${candidate.applicationDate}" readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Channel *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="channel"
+														th:value="${candidate.channel.channelName}" readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Site *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="site"
+														th:value="${candidate.location.locationName}" readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Account *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="account"
+														th:value="${candidate.traineeCandidateProfile.account}" readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Name *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="fullName"
+														th:value="${candidate.traineeCandidateProfile.fullName}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Gender *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="gender"
+														th:value="${candidate.traineeCandidateProfile.gender}"
+														readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">DOB *</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="dayOfBirth"
+														th:value="${candidate.traineeCandidateProfile.dateOfBirth}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">CV</p>
+													
+															<a class="text-decoration-none ms-5" id="fileName" th:if="${fileName}"
+                                 							  th:text="${fileName}"
+                                  								 th:href="@{downloadFileCandidate/{fileName} (fileName=${fileNameUUID})}"
+                                ></a>
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">University</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="universityName"
+														th:value="${candidate.traineeCandidateProfile.university.universityName}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Faculty</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="facultyName"
+														th:value="${candidate.traineeCandidateProfile.faculty.facultyName}"
+														readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Phone</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="phone"
+														th:value="${candidate.traineeCandidateProfile.phone}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Email</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="email"
+														th:value="${candidate.traineeCandidateProfile.email}"
+														readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Skill</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="skill"
+														th:value="${candidate.traineeCandidateProfile.skill}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Graduration Year</p>
+													<input type="date" class="form-control w-100"
+														aria-describedby="basic-addon3" name="graduationYear"
+														th:value="${candidate.traineeCandidateProfile.graduationYear}"
+														readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Foreign Language</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="foreignLanguage"
+														th:value="${candidate.traineeCandidateProfile.foreignLanguage}"
+														readonly />
+												</div>
+												<div class="col-6 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Level</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="level"
+														th:value="${candidate.traineeCandidateProfile.level}"
+														readonly />
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-12 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">Note</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="note" readonly />
+												</div>
+
+											</div>
+											<div class="row mt-2">
+												<div class="col-12 d-flex align-items-center">
+													<p class="mb-2 me-2 p-text">History</p>
+													<input type="text" class="form-control w-100"
+														aria-describedby="basic-addon3" name="history" th:value="${candidate.history}" readonly />
+												</div>
+
+											</div>
+
+
+
+										</div>
+									</div>
+
+									<div class="btn-group  w-25 mt-2" role="group"
+										aria-label="Basic mixed styles example">
+										<div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+										<button type="button" class="btn btn-outline-primary text-nowrap" 
+											id="updateCandidate"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i>&ensp;Update
+											Candidate</button>
+										</div>
+										<div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+										<button type="button" class="btn btn-outline-danger ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+											><i class="fa fa-times-circle" aria-hidden="true"></i>&ensp;Delete
+											Candidate</button>
+										</div>
+									</div>
+									<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Are you sure to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  id="deleteCandidate">OK</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-item">
+
+			<div id="viewResult" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+				data-bs-parent="#accordionFlushExample">
+					<div class="accordion-body">
+				<div class="row collapse.show">
+
+					<form action="#" id="formData" method="post" th:object="${candidate}">
+						<div id="Infomation">
+							<div class="card card-body d-flex">
+								<div class="row">
+									<button class="btn btn-secondary col-12" type="button" data-bs-toggle="collapse"
+										data-bs-target="#entryTest" aria-expanded="false"
+										aria-controls="collapseExample">
+										Entry Test
+									</button>
+
+
+								</div>
+								<div class="collapse row" id="entryTest">
+									<div class="card card-body">
+										<table>
+											<thead>
+												<tr class="align-table-text">
+
+													<th class="col-sm-1">Time</th>
+													<th class="col-sm-1">Date</th>
+													<th class="col-sm-2">Language Valuator</th>
+													<th class="col-sm-1 p-text">Language Point</th>
+													<th class="col-sm-1 p-text">Technical Valuator</th>
+													<th class="col-sm-2">Technical Point</th>
+													<th class="col-sm-1">Results</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="align-table-text" th:each="entryTest:${entryTests}">
+
+													<td class="col-sm-1">
+														<input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${entryTest.time}" readonly />
+													</td>
+													<td class="col-sm-1"><input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${entryTest.date}" readonly /></td>
+													<td class="col-sm-2"><input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${entryTest.languageValuator}" readonly /></td>
+													<td class="col-sm-1 p-text"><input type="text"
+															class="form-control w-100" aria-describedby="basic-addon3"
+															name="level" th:value="${entryTest.languageResult}"
+															readonly /></td>
+													<td class="col-sm-1 p-text"><input type="text"
+															class="form-control w-100" aria-describedby="basic-addon3"
+															name="level" th:value="${entryTest.technicalValuator}"
+															readonly /></td>
+													<td class="col-sm-2"><input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${entryTest.technicalResult}" readonly /></td>
+													<td class="col-sm-1"><select disabled name="result" class="form-control w-100" aria-describedby="basic-addon3">
+									<option th:each="option : ${T(fa.edu.vn.enums.EntryTestEnum).values()}"
+										th:value="${option}" th:text="${option.getDisplayValue()}"
+										th:selected="${option.getDisplayValue()==entryTest.result}"></option>
+										
+								</select></td>
+												</tr>
+											</tbody>
+										</table>
+
+
+									</div>
+								</div>
+								<div class="row mt-1">
+									<button class="btn btn-secondary col-12" type="button" data-bs-toggle="collapse"
+										data-bs-target="#interview" aria-expanded="false"
+										aria-controls="collapseExample">
+										Interview
+									</button>
+								</div>
+								<div class="collapse row" id="interview">
+									<div class="card card-body">
+										<table>
+											<thead>
+												<tr class="align-table-text">
+
+													<th class="col-sm-1">Time</th>
+													<th class="col-sm-1">Date</th>
+													<th class="col-sm-2">Interview</th>
+													<th class="col-sm-4 p-text">Comment</th>
+													<th class="col-sm-1">Results</th>
+												</tr>
+											</thead>
+											<tbody>
+											<tr class="align-table-text" th:each="interview:${interviews}">
+
+													<td class="col-sm-1">
+														<input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${interview.time}" readonly />
+													</td>
+													<td class="col-sm-1"><input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${interview.date}" readonly /></td>
+													<td class="col-sm-2"><input type="text" class="form-control w-100"
+															aria-describedby="basic-addon3" name="level"
+															th:value="${interview.interviewer}" readonly /></td>
+													<td class="col-sm-1 p-text"><input type="text"
+															class="form-control w-100" aria-describedby="basic-addon3"
+															name="level" th:value="${interview.comments}"
+															readonly /></td>
+													<td class="col-sm-1 p-text"><select disabled name="interview" class="form-control w-100">
+									<option th:each="option : ${T(fa.edu.vn.enums.InterviewEnum).values()}"
+										th:value="${option}" th:text="${option.getDisplayValue()}"
+										th:selected="${option.getDisplayValue()==interview.result}"></option>
+										
+								</select></td>
+													
+												</tr>
+											</tbody>
+										</table>
+
+
+									</div>
+								</div>
+
+								<div class="btn-group w-25 mt-2" role="group" aria-label="Basic mixed styles example" >
+								<div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+									<button type="button" class="btn btn-outline-primary text-nowrap"
+										id="updateCandidate"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i>&ensp;Update
+										Candidate</button>
+								</div>
+								<div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+									<button type="button" class="btn btn-outline-danger ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#staticBackdrop4"><i class="fa fa-times-circle" aria-hidden="true"></i>&ensp;Delete
+										Candidate</button>
+								</div>
+								</div>
+								<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Are you sure to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  id="deleteCandidate">OK</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>

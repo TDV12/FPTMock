@@ -1,0 +1,407 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="row">
+    <p class="text-danger" th:if="${mess}" th:text="${mess}">
+    </p>
+    <form action="#" id="formData" method="post" th:object="${classDto}" enctype="multipart/form-data">
+        <div id="Infomation">
+            <div class="card card-body d-flex">
+                <div class="row">
+                    <button class="btn colorBt btn-secondary col-3" type="button" data-bs-toggle="collapse"
+                            id="generalButton"
+                            data-bs-target="#General"
+                            aria-expanded="false" aria-controls="collapseExample">
+                        General
+                    </button>
+                    <button class="btn colorBt btn-secondary col-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#Detail"
+                            aria-expanded="false" aria-controls="collapseExample">
+                        Detail
+                    </button>
+                    <button class="btn colorBt btn-secondary col-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#Budget"
+                            aria-expanded="false" aria-controls="collapseExample">
+                        Budget
+                    </button>
+                    <button class="btn colorBt btn-secondary col-3" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#audit"
+                            aria-expanded="false" aria-controls="collapseExample">
+                        Audit
+                    </button>
+                </div>
+                <div class="collapse" id="General">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Class Code</p>
+                                    <input type="text" class="form-control w-100 readonly"
+                                           aria-describedby="basic-addon3"
+                                           name="classCode"
+                                           th:field="*{classCode}" readonly/>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('classCode')}"
+                                       th:errors="*{classCode}"></p>
+                                </div>
+                            </div>
+                            <div class="col-4 ">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Class Name</p>
+                                    <select name="className" class="form-select"
+                                            aria-label="Default select example"
+                                            th:field="*{className}">
+                                        <option th:each="option : ${classNames}"
+                                                th:value="${option.classNameId}"
+                                                th:text="${option.className}"
+                                        ></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('className')}"
+                                       th:errors="*{className}"></p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Status</p>
+                                    <select name="status" class="form-select" aria-label="Default select example"
+                                            th:field="*{status}">
+                                        <option value="Draft">Draft</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('status')}"
+                                       th:errors="*{status}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-1">
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Planned Trainee No</p>
+                                <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="plannedTrainee" min="0"/>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Accepted Trainee No</p>
+                                <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="acceptedTrainee" min="0"/>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Actual Trainee No</p>
+                                <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="actualTrainee" min="0"/>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Excepted Start Date *</p>
+                                    <input id="exceptedStartDate" type="date" class="form-control w-100"
+                                           aria-describedby="basic-addon3"
+                                           name="exceptedStartDate"
+                                           th:field="*{exceptedStartDate}"
+                                           data-error="#exceptedStartDateMess"
+                                    />
+                                </div>
+                                <div>
+                                    <p class="text-danger"
+                                       th:if="${#fields.hasErrors('exceptedStartDate')}"
+                                       th:errors="*{exceptedStartDate}"></p>
+                                    <span class="text-danger" id="exceptedStartDateMess"></span>
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Exceptecd End Date *</p>
+                                    <input type="date" class="form-control w-100" aria-describedby="basic-addon3"
+                                           id="exceptedEndDate" th:field="*{exceptedEndDate}"
+                                           data-error="#exceptedEndDateMess"
+                                    />
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('exceptedEndDate')}"
+                                       th:errors="*{exceptedEndDate}"></p>
+                                    <span class="text-danger" id="exceptedEndDateMess"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Location *</p>
+                                    <select name="locationName" class="form-select"
+                                            aria-label="Default select example"
+                                            th:field="*{locationId}">
+                                        <option th:each="option : ${locations}"
+                                                th:value="${option.locationId}"
+                                                th:text="${option.locationName}"
+                                        ></option>
+                                    </select>
+                                    <div>
+                                        <p class="text-danger" th:if="${#fields.hasErrors('locationId')}"
+                                           th:errors="*{locationId}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Detailed Location *</p>
+                                    <select name="detailLocation" id="detailLocation" class="form-select"
+                                            aria-label="Default select example" th:field="*{detailLocation}">
+                                    </select>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('detailLocation')}"
+                                       th:errors="*{detailLocation}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Budget Code *</p>
+                                    <select class="form-select" aria-label="Default select example" name="budgetCode"
+                                            id="budgetCode" th:field="*{budgetCode}">
+                                        <option th:each="option :${budgets}"
+                                                th:value="${option.budgetId}" th:text="${option.budgetCode}"></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('budgetCode')}"
+                                       th:errors="*{budgetCode}"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Estimated Budget *</p>
+                                    <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                           name="estimatedBudget" id="estimatedBudget" th:field="*{estimatedBudget}"
+                                           min="0"
+                                           data-error="#estimatedBudgetError"
+                                    />
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('estimatedBudget')}"
+                                       th:errors="*{estimatedBudget}"></p>
+                                    <span class="text-danger" id="estimatedBudgetError"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="d-flex align-items-center w-100">
+                                    <p class="mb-2 me-2 p-text">Class Admin *</p>
+                                    <select class="form-select" aria-label="Default select example"
+                                            name="classAdmin" th:field="*{classAdmin}">
+                                        <option th:each="option:${classAdmin}"
+                                                th:value="${option.classAdminId}"
+                                                th:text="${option.classAdminName}"></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('classAdmin')}"
+                                       th:errors="*{classAdmin}"></p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-2 me-2 p-text">Learning Path *</p>
+                                    <input type="file"
+                                           accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                                           class="form-control w-100"
+                                           aria-describedby="basic-addon3"
+                                           th:field="*{learningPath}" id="learningPath"
+                                           data-error="#learningPathMess"
+                                    />
+                                </div>
+                                <div>
+                                    <p class="text-danger" th:if="${#fields.hasErrors('learningPath')}"
+                                       th:errors="*{learningPath}"></p>
+                                    <span class="text-danger" id="learningPathMess"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class=" d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">History *</p>
+                                <input type="text" class="form-control w-100" aria-describedby="basic-addon3" disabled/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="Detail">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Subject Type</p>
+                                <select class="form-select" aria-label="Default select example" name="subjectType">
+                                    <option th:each="option:${subjectTypes}"
+                                            th:value="${option.subjectTypeId}"
+                                            th:text="${option.subjectTypeName}"></option>
+                                </select>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Sub-Subject Type</p>
+                                <select class="form-select" aria-label="Default select example"
+                                        name="subSubjectType">
+                                    <option th:each="option:${subSubjectTypes}"
+                                            th:value="${option.subSubjectTypeId}"
+                                            th:text="${option.subSubjectType}"></option>
+                                </select>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Delivery Type</p>
+                                <select class="form-select" aria-label="Default select example" name="deliveryType">
+                                    <option th:each="option:${deliveryTypes}"
+                                            th:value="${option.deliveryTypeId}"
+                                            th:text="${option.deliveryType}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Format Type</p>
+                                <select class="form-select" aria-label="Default select example" name="formatType">
+                                    <option th:each="option :${formatTypes}"
+                                            th:value="${option.formatTypeId}" th:text="${option.formatType}"></option>
+                                </select>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Scope</p>
+                                <select class="form-select" aria-label="Default select example" name="scope">
+                                    <option th:each="option : ${scopes}"
+                                            th:value="${option.scopeId}" th:text="${option.scope}"></option>
+                                </select>
+                            </div>
+                            <div class="col-4 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Supplier/Partner</p>
+                                <select class="form-select" aria-label="Default select example" name="supplierPartner">
+                                    <option th:each="option : ${supplierPartner}"
+                                            th:value="${option.supplierId}" th:text="${option.supplierName}"
+                                    ></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Actual Start Date </p>
+                                <input type="date" class="form-control w-100" aria-describedby="basic-addon3"
+                                       id="actualStartDate"/>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Actual End Date</p>
+                                <input type="date" class="form-control w-100" aria-describedby="basic-addon3"
+                                       id="actualEndDate"/>
+                            </div>
+                            <div class="d-flex">
+                                <div class="col-6">
+                                    <span class="text-danger" id="actualStartDateMess"></span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="text-danger" id="actualEndDateMess"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Master Trainer </p>
+                                <select class="form-select" aria-label="Default select example"
+                                        name="masterTrainer">
+                                    <option th:each="option:${masterTrainers}"
+                                            th:value="${option.masterTrainerId}" th:text="${option.account}"></option>
+                                </select>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Trainer</p>
+                                <select class="form-select" aria-label="Default select example"
+                                        name="trainer">
+                                    <option th:each="option:${trainers}"
+                                            th:value="${option.trainerId}" th:text="${option.account}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">curriculum</p>
+                                <input type="text" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="curriculum"/>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Remarks</p>
+                                <input type="text" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="remarks"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="Budget">
+                    <div class="card card-body">
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Total</p>
+                                <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="total" id="total" readonly/>
+                            </div>
+                            <div class="col-6 d-flex align-items-center">
+                                <p class="mb-2 me-2 p-text">Over Budget</p>
+                                <input type="number" class="form-control w-100" aria-describedby="basic-addon3"
+                                       name="overBudget" id="overBudget" readonly/>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <table class="table-secondary">
+                                <thead>
+                                <tr>
+                                    <th class="col-sm-1"><a type="button" id="myTableBudget"><i
+                                            class="fa-solid fa-plus"></i></a></th>
+                                    <th class="col-sm-1">Item</th>
+                                    <th class="col-sm-1">Unit</th>
+                                    <th class="col-sm-2">Unit Expense</th>
+                                    <th class="col-sm-2">Quantity</th>
+                                    <th class="col-sm-1">Amount</th>
+                                    <th class="col-sm-1">Tax</th>
+                                    <th class="col-sm-1">Sum</th>
+                                    <th class="col-sm-1">Note</th>
+                                </tr>
+                                </thead>
+                                <tbody id="budgetTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="audit">
+                    <div class="card card-body">
+                        <div class="row mt-2">
+                            <table class="table-secondary">
+                                <thead>
+                                <tr>
+                                    <th
+                                            class="col-sm-1"><a type="button" id="auditTable"><i
+                                            class="fa-solid fa-plus"></i></a></th>
+                                    <th class="col-sm-1">Date</th>
+                                    <th class="col-sm-3 p-text text-center">Event Category</th>
+                                    <th class="col-sm-2 text-center">Related People</th>
+                                    <th class="col-sm-2 text-center ">Action</th>
+                                    <th class="col-sm-1 text-center">Pic</th>
+                                    <th class="col-sm-1 text-center">DeadLine</th>
+                                    <th class="col-sm-1 text-center">Note</th>
+                                </tr>
+                                </thead>
+                                <tbody id="auditTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-25 mt-2" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger" id="submitCreateClass" disabled>Submit</button>
+                    <button type="button" class="btn btn-outline-dark"><i class="fa fa-reply" aria-hidden="true"></i>&ensp;Close</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,80 @@
+<div class="card card-body">
+    <div class="row">
+        <div class="col-3 d-flex  align-items-center">
+            <p class="mb-2 me-2 p-text">Empl ID</p>
+            <input type="text" class="form-control w-100" aria-describedby="basic-addon3" id="emplId1"/>
+        </div>
+        <div class="col-3 d-flex  align-items-center">
+            <p class="mb-2 me-2">Account</p>
+            <input type="text" class="form-control w-100" aria-describedby="basic-addon3" id="emplAccount1"/>
+        </div>
+        <div class="col-3 d-flex  align-items-center">
+            <p class="mb-2 me-2">Name</p>
+            <input type="text" class="form-control w-100" aria-describedby="basic-addon3" id="emplName1"/>
+        </div>
+        <div class="col-2 d-flex  align-items-center ">
+            <button type="button" class="btn btn-secondary" id="searchTraineeDB">Search</button>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-4 d-flex w-25 align-items-center">
+            <p class="mb-2 me-2">DOB</p>
+            <input type="date" class="form-control w-100" aria-describedby="basic-addon3" id="emplDoB1"/>
+        </div>
+        <div class="col-4 d-flex w-25 align-items-center">
+            <p class="mb-2 me-2">Phone</p>
+            <input type="number" class="form-control w-100" aria-describedby="basic-addon3" id="emplPhone1"/>
+        </div>
+        <div class="col-4 d-flex w-25 align-items-center">
+            <p class="mb-2 me-2">Email</p>
+            <input type="text" class="form-control w-100" aria-describedby="basic-addon3" id="emplEmail1"/>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <table class="table table-secondary">
+            <thead>
+            <tr>
+                <th class="filterable-cell text-center"><input type="checkbox" id="checkAllAddTrainee"></th>
+                <th class="filterable-cell text-center">#</th>
+                <th class="filterable-cell p-text text-center">Empl ID</th>
+                <th class="filterable-cell text-center">Account</th>
+                <th class="filterable-cell p-text text-center">Name</th>
+                <th class="filterable-cell p-text text-center">DOB</th>
+                <th class="filterable-cell text-center">Gender</th>
+                <th class="filterable-cell text-center">University</th>
+                <th class="filterable-cell text-center">Faculty</th>
+                <th class="filterable-cell text-center">Phone</th>
+                <th class="filterable-cell text-center">Email</th>
+                <th class="filterable-cell text-center">Status</th>
+            </tr>
+            </thead>
+            <tbody id="listTraineeAddTrainee">
+            <tr th:each="trainee,start :${traineesDB}">
+                <td class="filterable-cell"><input type="checkbox" class="checkBox" th:name="${start.index}"
+                                                   th:id="${trainee.empId}"></td>
+                <td class="filterable-cell" th:text="${start.index+1}"></td>
+                <td class="filterable-cell" th:text="${trainee.empId}"></td>
+                <td class="filterable-cell" th:text="${trainee.account}"></td>
+                <td class="filterable-cell p-text" th:text="${trainee.name}"></td>
+                <td class="filterable-cell" th:text="${trainee.dob}"></td>
+                <td class="filterable-cell" th:text="${trainee.gender}"></td>
+                <td class="filterable-cell" th:text="${trainee.university}"></td>
+                <td class="filterable-cell" th:text="${trainee.faculty}"></td>
+                <td class="filterable-cell" th:text="${trainee.phone}"></td>
+                <td class="filterable-cell" th:text="${trainee.email}"></td>
+                <td class="filterable-cell" th:text="${trainee.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="mt-3 col-sm-6 d-flex justify-content-end">
+            <input type="hidden" class="w-25" th:value="${totalPage1}" id="total-page1">
+            <form id="form-paging" method="get">
+                <ul class="" id="paginationAddTrainee"></ul>
+                <input type="hidden" th:value="${currentPage1}" name="currentPage1" id="current-page1">
+                <input type="hidden" th:value="${sizePage1}" name="sizePage1" id="size-page1">
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/twbsPagination.js"></script>
+<script src="/js/pagings.js"></script>

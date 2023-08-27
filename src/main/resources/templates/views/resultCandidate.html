@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="row">
+
+	<form action="#" id="formData" method="post">
+		<div id="Infomation">
+			<div class="card card-body d-flex">
+				<div class="row">
+					<button class="btn btn-secondary colorBt col-12" type="button" data-bs-toggle="collapse"
+						data-bs-target="#entryTest" aria-expanded="false" aria-controls="collapseExample">
+						Entry Test
+					</button>
+
+
+				</div>
+				<div class="collapse row" id="entryTest">
+					<div class="card card-body">
+						<table>
+							<thead>
+								<tr class="align-table-text">
+
+									<th class="col-sm-1">Time</th>
+									<th class="col-sm-1">Date</th>
+									<th class="col-sm-2">Language Valuator</th>
+									<th class="col-sm-1 p-text">Language Point</th>
+									<th class="col-sm-1 p-text">Technical Valuator</th>
+									<th class="col-sm-2">Technical Point</th>
+									<th class="col-sm-1">Results</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+
+
+					</div>
+				</div>
+				<div class="row mt-1">
+					<button class="btn btn-secondary colorBt col-12" type="button" data-bs-toggle="collapse"
+						data-bs-target="#interview" aria-expanded="false" aria-controls="collapseExample">
+						Interview
+					</button>
+				</div>
+				<div class="collapse row" id="interview">
+					<div class="card card-body">
+						<table>
+							<thead>
+								<tr class="align-table-text">
+
+									<th class="col-sm-1">Time</th>
+									<th class="col-sm-1">Date</th>
+									<th class="col-sm-2">Interview</th>
+									<th class="col-sm-4 p-text">Comment</th>						
+									<th class="col-sm-1">Results</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+
+
+					</div>
+				</div>
+
+				<div class="btn-group  w-25 mt-2" role="group" aria-label="Basic mixed styles example">
+					<button type="button" class="btn btn-danger text-nowrap" id="submitCreateCandidate">Update
+						Candidate</button>
+					<button type="button" class="btn btn-warning ms-2 text-nowrap">Delete Candidate</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

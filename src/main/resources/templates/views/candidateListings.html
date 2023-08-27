@@ -1,0 +1,182 @@
+<h4 class="mt-3">Candidate Listing</h4>
+<hr>
+<div class="card card-body">
+<form method="post" id="formDataSearchCandidate">
+<div class="row">
+    <div class="col-3 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2 text-nowrap">Empl ID</p>
+        <input type="text" name="emplId" th:value="${emplId2}" id="emplIdSearch" class="form-control w-100">
+    </div>
+    <div class="col-3 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2 p-text">Account</p>
+        <input type="text" name="account" th:value="${account2}" id="accountSearch" class="form-control w-100">
+    </div>
+    <div class="col-3 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2">Name</p>
+        <input type="text" name="name" th:value="${name2}" id="nameSearch" class="form-control w-100">
+    </div>
+    <div class="col-3 d-flex w-25 align-items-center ">
+        <button type="button" class="btn btn-secondary" id="searchButtonCandidate"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search</button>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-2 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2 p-text">DOB</p>
+        <input type="date" class="form-control w-100" th:value="${DOB2}" id="DOBSearch" aria-describedby="basic-addon3" data-error="#DOBSearchMess"/>
+       
+    </div>
+    <div class="col-2 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2 p-text">Phone</p>
+        <input type="text" id="phoneSearch" th:value="${phone2}" class="form-control w-100"  />
+    </div>
+    <div class="col-3 d-flex w-25 align-items-center">
+        <p class="mb-2 me-2">Email</p>
+        <input type="text" name="email" th:value="${email2}" id="emailSearch" class="form-control w-100">
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-2 d-flex w-25 align-items-center">
+        
+        <span class="error" id="DOBSearchMess"></span >
+    </div>
+    <div class="col-2 d-flex w-25 align-items-center">
+        
+    </div>
+    <div class="col-3 d-flex w-25 align-items-center">
+       
+    </div>
+</div>
+</form>
+<hr>
+<form action="post">
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr class="align-table-text">
+        <th class="col-sm"><input type="checkbox" id="checkBoxAll"></th>
+        <th class="col-sm">#</th>
+        <th class="col-sm text-nowrap">Empl ID</th>
+        <th class="col-sm">Account</th>
+        <th class="col-sm p-text">Name</th>
+        <th class="col-sm p-text">DOB</th>
+        <th class="col-sm">Gender</th>
+        <th class="col-sm">University</th>
+        <th class="col-sm">Faculty</th>
+        <th class="col-sm">Phone</th>
+        <th class="col-sm">Email</th>
+        <th class="col-sm">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="candidate,state:${candidates}" class="align-table-text">
+        <td class="col-sm"><input type="checkbox" name="Item" th:id="${candidate.emplId}+checkBoxId" th:value="${candidate.emplId}" class="checkBoxItem"></td>
+
+            <td th:text="${state.count}" class="col-sm"></td>
+        <td  class="col-sm"><a name="emplId" class="candidateClick" href="#" th:id="${candidate.emplId}+viewCandidateDetail" th:text="${candidate.emplId}" th:value="${candidate.emplId}" ></a  ></td>
+        <td th:text="${candidate.traineeCandidateProfile.account}" class="col-sm"></td>
+       <td th:text="${candidate.traineeCandidateProfile.fullName}" class="col-sm"></td>
+       <td th:text="${candidate.traineeCandidateProfile.dateOfBirth}" class="col-sm"></td>
+        <td th:text="${candidate.traineeCandidateProfile.gender}" class="col-sm"></td>
+        <td th:text="${candidate.traineeCandidateProfile.university.universityName}" class="col-sm"></td>
+
+        <td th:text="${candidate.traineeCandidateProfile.faculty.facultyName}" class="col-sm"></td>
+
+       <td th:text="${candidate.traineeCandidateProfile.phone}" class="col-sm"></td>
+
+       <td th:text="${candidate.traineeCandidateProfile.email}" class="col-sm"></td>
+
+       <td th:text="${candidate.status}" class="col-sm"></td>
+
+    </tr>
+    <tr th:each="candidate2,state2:${candidateSearchs}" class="align-table-text">
+        <td class="col-sm"><input type="checkbox" name="Item" th:id="${candidate2.emplId}+checkBoxId" th:value="${candidate2.emplId}" class="checkBoxItem"></td>
+
+            <td th:text="${state2.count}" class="col-sm"></td>
+        <td  class="col-sm"><a name="emplId" class="candidateClick" href="#" th:id="${candidate2.emplId}+viewCandidateDetail" th:text="${candidate2.emplId}" th:value="${candidate2.emplId}" ></a  ></td>
+        <td th:text="${candidate2.account}" class="col-sm"></td>
+       <td th:text="${candidate2.fullName}" class="col-sm"></td>
+       <td th:text="${candidate2.dateOfBirth}" class="col-sm"></td>
+        <td th:text="${candidate2.gender}" class="col-sm"></td>
+        <td th:text="${candidate2.universityName}" class="col-sm"></td>
+
+        <td th:text="${candidate2.facultyName}" class="col-sm"></td>
+
+       <td th:text="${candidate2.phone}" class="col-sm"></td>
+
+       <td th:text="${candidate2.email}" class="col-sm"></td>
+
+       <td th:text="${candidate2.status}" class="col-sm"></td>
+
+    </tr>
+    </tbody>
+    
+    
+    
+</table>
+<div class="row">
+<div class="mt-2 w-25 col-6 ">
+<div class="row">
+    <label class="form-label fw-bold col-4 d-flex" for="sizePage">Page Size</label>
+    <select class="form-select w-25 col-8 d-flex" id="sizePageSelect" name="sizePage">>
+        <option th:selected="${sizePage==2}" value="2">2</option>
+        <option th:selected="${sizePage==5}" value="5">5</option>
+        <option th:selected="${sizePage==10}" value="10">10</option>
+        <option th:selected="${sizePage==20}" value="20">20</option>
+        <option th:selected="${sizePage==50}" value="50">50</option>
+    </select>
+</div>
+</div>
+<div class="mt-2 col-9 d-flex justify-content-end">
+
+										<input type="hidden" th:value="${totalPage}" id="total-page">
+										<form id="form-paging" class="w-50" action="/candidateListing" method="get">
+											<ul class="" id="pagination"></ul>
+											<input type="hidden" th:value="${emplId2}" name="emplId2" id="emplId2">
+											<input type="hidden" th:value="${account2}" name="account2" id="account2">
+											<input type="hidden" th:value="${name2}" name="name2" id="name2">
+											<input type="hidden" th:value="${DOB2}" name="DOB2" id="DOB2">
+											<input type="hidden" th:value="${phone2}" name="phone2" id="phone2">
+											<input type="hidden" th:value="${email2}" name="email2" id="email2">
+										
+											
+											<input type="hidden" th:value="${currentPage}" name="currentPage"
+												id="current-page">
+											<input type="hidden" th:value="${sizePage}" name="sizePage" id="size-page">
+										</form>
+									</div>
+</div >
+<div class="btn-group mt-2 mb-2" role="group" aria-label="Basic mixed styles example">
+    <div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+        <button type="button" class="btn btn-outline-success" id="createNewCandidate"><i class="fa fa-plus-circle" aria-hidden="true"></i>&ensp;New Candidate</button>
+    </div>
+    <div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+        <button type="button" class="btn btn-outline-primary" id="updateCandidateOnListing"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i>&ensp;Update Candidate</button>
+    </div>
+    <div class="mx-2" sec:authorize="hasAnyRole('ROLE_FAManager','ROLE_FARec')">
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa fa-times-circle" aria-hidden="true"></i>&ensp;Delete Candidate</button>
+    </div>
+</div>
+
+
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Are you sure to update?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  id="deleteMutilCandidate">OK</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+</div>
+   <script src="/js/twbsPagination.js"></script>
+<script src="/js/paging.js"></script>
+ 
+

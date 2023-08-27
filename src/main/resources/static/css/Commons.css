@@ -1,0 +1,453 @@
+body {
+    box-sizing: border-box;
+   font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+    margin: 0;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.header {
+    background-color: #1668b2 !important;
+    /* width: 100%; */
+  
+}
+.indexCao{
+	z-index: 1;
+}
+.navbar {
+	padding: 0;
+	}
+	
+.list-group-item{
+	border: 0px solid !important;
+}
+
+.nav-color {
+    background-color: whitesmoke;
+}
+
+#vh-90 {
+    height: 90vh;
+}
+
+#vh-100 {
+    height: auto;
+    min-height: 85vh;
+}
+
+.pading-top-50 {
+    padding-top: 50px;
+}
+
+.w-100px {
+    width: 100px;
+}
+
+.textFooter {
+    padding-left: 300px;
+}
+
+.mx-195px {
+    margin-left: 195px;
+}
+
+#footer {
+    bottom: 0;
+    width: 100%;
+}
+.card-footer {
+	margin: 0;
+}
+
+.w-400px {
+    width: 17rem;
+}
+
+.ea_table {
+    border: 1px solid #ddd;
+    display: block;
+    background: #fff;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+.ea_table thead {
+    flex-direction: column;
+    display: flex;
+}
+
+.ea_table tbody {
+    flex-direction: column;
+    display: flex;
+}
+
+.ea_table tbody {
+    height: 300px;
+    overflow: auto;
+}
+
+.ea_table thead {
+    border-bottom: 1px solid #ddd;
+}
+
+.ea_table tr {
+    display: flex;
+}
+
+.ea_table tbody tr:nth-child(2n + 1) {
+    background: #f8f8f8;
+}
+
+.ea_table td,
+.ea_table th {
+    text-align: left;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.p-text {
+    white-space: nowrap;
+}
+
+.align-table-text th,
+td {
+    text-align: center;
+}
+
+.colorBt {
+    background-color: #95BCF2;
+    border-color: #95BCF2;
+    color: black;
+}
+
+.loginCss {
+    background-image: linear-gradient(to right bottom, #2a374c, #005875, #007c7e, #009b5d, #82b11a);
+    color: white;
+
+}
+.loginText{
+	 position: absolute;
+	 left: 26%;
+	 top: 30%;
+	 z-index: 1;
+	 width: 200px;
+}
+
+.inputCss {
+    width: 95%;
+    transition: width 0.2s;
+}
+
+.inputCss:focus {
+    width: 100%;
+}
+
+.loginFormCss {
+    position: relative;
+    z-index: 1;
+}
+
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+}
+
+.bubbles > li {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    list-style: none;
+    bottom: -10%;
+}
+
+.bubbles > li:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    animation: square 30s infinite;
+}
+
+.bubbles > li:nth-child(2) {
+    width: 50px;
+    height: 50px;
+    animation: square 18s infinite;
+    left: 15%;
+}
+
+.bubbles > li:nth-child(6) {
+    width: 50px;
+    height: 50px;
+    animation: square 18s infinite;
+    animation-delay: 3s;
+    left: 20%;
+}
+
+.bubbles > li:nth-child(7) {
+    width: 19px;
+    height: 50px;
+    animation: square 20s infinite;
+    animation-delay: 5s;
+    left: 40%;
+}
+
+.bubbles > li:nth-child(8) {
+    width: 70px;
+    height: 90px;
+    animation: square 25s infinite;
+    animation-delay: 6s;
+    left: 60%;
+}
+
+.bubbles > li:nth-child(9) {
+    width: 70px;
+    height: 26px;
+    animation: square 29s infinite;
+    animation-delay: 4s;
+    left: 35%;
+}
+
+.bubbles > li:nth-child(10) {
+    width: 200px;
+    height: 120px;
+    animation: square 30s infinite;
+    animation-delay: 5s;
+    left: 80%;
+}
+
+.bubbles > li:nth-child(3) {
+    width: 80px;
+    height: 80px;
+    animation: square 25s infinite;
+    left: 25%;
+}
+
+.bubbles > li:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    animation: square 15s infinite;
+    left: 50%;
+}
+
+.bubbles > li:nth-child(5) {
+    width: 40px;
+    height: 40px;
+    animation: square 10s infinite;
+    left: 70%;
+}
+
+.bubbles > li:nth-child(6) {
+    width: 20px;
+    height: 20px;
+    animation: square 30s infinite;
+    left: 90%;
+}
+
+@keyframes square {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-110vh) rotate(600deg)
+    }
+}
+
+
+.navCss {
+    background-color: whitesmoke;
+}
+
+.hoverMenu a {
+    position: relative;
+}
+
+.hoverMenu a::after {
+    content: "";
+    height: 3px;
+    width: 0;
+    background: rgb(0, 128, 192);
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    
+    transition: all 0.5s ease-in-out;
+}
+.hoverMenu span a{
+	transition: .4s;
+}
+.hoverMenu2 span a{
+	transition: .4s;
+}
+
+.navSileBar{
+	position: fixed;
+	top: 65.5px;
+	width: 240px;
+	height: 100%;
+	left: -185px;
+	 transition: all 0.5s ease;
+	 
+	
+}
+.navSileBar2{
+	position: fixed;
+	top: 65.5px;
+	width: 50px;
+	height: 100%;
+	left: 0;
+	 transition: all 0.5s ease;
+}
+.hoverMenu span:hover a{
+	padding-left: 40px;
+}
+.hoverMenu2 span:hover a{
+	padding-left: 30px;
+}
+#checkTag{
+	display: none;
+}
+label #btn, label #cancel{
+	position: absolute;
+	cursor: pointer;
+	background: rgb(157, 223, 255);
+	border-radius: 3px;
+}
+#labelCutsom #btn{
+	left: 10px;
+	top: 70px;
+	font-size: 20px;
+	color: white;
+	padding: 6px 12px;
+	transition: all .5s;
+		z-index: 1111;
+}
+#labelCutsom #cancel{
+	z-index: 1111;
+	left: -195px;
+	top: 70px;
+	font-size: 30px;
+	color: rgb(255, 255, 255);
+	padding: 4px 9px;
+		 transition: all 0.5s ease;
+	}
+#checkTag:checked ~ #labelCutsom #btn{
+	left: 250px;
+	opacity: 0;
+	pointer-events: none;
+}
+#checkTag:checked ~ #labelCutsom #cancel{
+	left: 195px;
+	
+}
+#checkTag:checked ~ .viewContent{
+	margin-left: 240px;
+}
+.viewContent{
+	transition: all 0.5s;
+	min-height: 79vh;
+	margin-left: 50px;
+
+}
+#checkTag:checked ~ .navSileBar{
+	left: 0;
+}
+#checkTag:checked ~ .navSileBar2{
+	left: -185px;
+}
+.hoverMenu a:hover::after {
+    width: 50%;
+    transform: translateX(100%);
+}
+
+body {
+/*    background-image: url(/css/image/grunge-wall-texture.jpg);
+*/background-size: 800px auto;
+
+}
+
+.container-lg {
+   
+    background-color: white;
+}
+
+.accordion-button {
+    background-color: #DDDDDD;
+    padding: 0.55rem;
+    border-radius: 0.25rem !important;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.error{
+	color: red;
+}
+
+.flag {
+	position: absolute;
+	left: 60%;
+	
+}
+.loading {
+		width: 18rem;
+		height: 18rem;
+		
+		position: absolute;
+		left:59.5%;
+		z-index: 1;
+}
+
+.loading div {
+	position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			
+			transform: rotate(calc(var(--value)*22.5deg));
+			
+}
+/* 360/16=22.5 */
+
+.loading div::before{
+	content:"";
+	position: absolute;
+	top: 0;
+	left: 20%;
+	width: 18px;
+	height: 18px;
+	border: 5px solid #00aefd;
+	border-radius: 6rem;
+	filter: hue-rotate(calc(var(--value)*22.5deg));
+	animation:loading 1s infinite ;
+	animation-delay: calc(var(--value)*0.0625s);
+	}
+
+@keyframes loading {
+	to {
+		transform: scale(0);
+		
+	}
+}
+
+.TransparentLogin {
+	height: 400px;
+	width: 350px;
+	background:linear-gradient(rgb(0, 128, 128),rgb(0, 64, 128));
+	position: absolute;
+	top: 25%;
+	left: 18%;
+
+	opacity: 80%;
+	box-shadow: 7px 7px 60px #333;
+	border-radius: 1rem;
+	
+}
