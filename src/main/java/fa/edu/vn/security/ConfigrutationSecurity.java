@@ -57,7 +57,7 @@ public class ConfigrutationSecurity extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?action=LOGOUT")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login", "/logout", "/js/**", "/css/**", "/init/login", "/init/masterData").permitAll()
+                .antMatchers("/login", "/register", "/logout", "/js/**", "/css/**", "/init/login", "/init/masterData").permitAll()
                 .antMatchers("/CreateNewClass", "/cancelClass", "/importTrainee", "/removerTrainee", "/viewCandidate", "/deleteTraineeProfile").hasAnyRole("FAManager", "DeliveryManager")
                 .antMatchers("/updateClass", "/updateTraineeProfile","/submitClass").hasAnyRole("FAManager", "DeliveryManager", "ClassAdmin")
                 .antMatchers("/createCandidate", "/updateCandidate", "/deleteCanidate", "/viewCandidate").hasAnyRole("FAManager", "FARec")
